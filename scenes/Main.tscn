@@ -1,0 +1,297 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8main00food"]
+
+[ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/systems/CustomerSpawner.gd" id="2_spawner"]
+[ext_resource type="PackedScene" uid="uid://b8menumg00food" path="res://scenes/MenuManager.tscn" id="3_menumg"]
+[ext_resource type="PackedScene" uid="uid://b8staffmg00food" path="res://scenes/StaffManager.tscn" id="4_staffmg"]
+[ext_resource type="PackedScene" uid="uid://b8strat00food" path="res://scenes/StrategyPanel.tscn" id="5_strat"]
+[ext_resource type="PackedScene" uid="uid://b8dayend00food" path="res://scenes/DayEndReport.tscn" id="6_dayend"]
+[ext_resource type="PackedScene" uid="uid://b8region00food" path="res://scenes/RegionTransfer.tscn" id="7_region"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("2_spawner")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.12, 0.16, 1)
+
+[node name="TopBar" type="PanelContainer" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="HBox" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "💰 5,000,000원"
+
+[node name="TimeLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "⏰ 09:00"
+
+[node name="DayLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Day 1"
+
+[node name="ReputationLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "⭐ 3.0"
+
+[node name="RegionLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "📍 노원/상계"
+
+[node name="CustomerCountLabel" type="Label" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "👥 0"
+
+[node name="Spacer" type="Control" parent="UI/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PauseButton" type="Button" parent="UI/TopBar/HBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "⏸"
+
+[node name="CenterArea" type="Control" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameView" type="Control" parent="UI/CenterArea"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 0.65
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Floor" type="ColorRect" parent="UI/CenterArea/GameView"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.20, 0.16, 0.14, 1)
+
+[node name="Kitchen" type="ColorRect" parent="UI/CenterArea/GameView"]
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 1040.0
+offset_bottom = 96.0
+color = Color(0.32, 0.28, 0.30, 1)
+
+[node name="KitchenLabel" type="Label" parent="UI/CenterArea/GameView/Kitchen"]
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 32.0
+text = "🍳 주방"
+
+[node name="StaffContainer" type="HBoxContainer" parent="UI/CenterArea/GameView/Kitchen"]
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 780.0
+offset_bottom = 76.0
+theme_override_constants/separation = 12
+
+[node name="Tables" type="Control" parent="UI/CenterArea/GameView"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Table0" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 180.0
+offset_top = 140.0
+offset_right = 280.0
+offset_bottom = 200.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table0"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T1"
+
+[node name="Table1" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 540.0
+offset_top = 140.0
+offset_right = 640.0
+offset_bottom = 200.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table1"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T2"
+
+[node name="Table2" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 900.0
+offset_top = 140.0
+offset_right = 1000.0
+offset_bottom = 200.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table2"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T3"
+
+[node name="Table3" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 180.0
+offset_top = 230.0
+offset_right = 280.0
+offset_bottom = 290.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table3"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T4"
+
+[node name="Table4" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 540.0
+offset_top = 230.0
+offset_right = 640.0
+offset_bottom = 290.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table4"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T5"
+
+[node name="Table5" type="ColorRect" parent="UI/CenterArea/GameView/Tables"]
+offset_left = 900.0
+offset_top = 230.0
+offset_right = 1000.0
+offset_bottom = 290.0
+color = Color(0.50, 0.32, 0.20, 1)
+
+[node name="Label" type="Label" parent="UI/CenterArea/GameView/Tables/Table5"]
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "T6"
+
+[node name="Entrance" type="ColorRect" parent="UI/CenterArea/GameView"]
+offset_left = 580.0
+offset_top = 320.0
+offset_right = 700.0
+offset_bottom = 360.0
+color = Color(0.15, 0.30, 0.15, 1)
+
+[node name="EntranceLabel" type="Label" parent="UI/CenterArea/GameView/Entrance"]
+offset_left = 30.0
+offset_top = 8.0
+offset_right = 110.0
+offset_bottom = 32.0
+text = "↑ 입구"
+
+[node name="CustomersLayer" type="Control" parent="UI/CenterArea/GameView"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="StatusLog" type="RichTextLabel" parent="UI/CenterArea"]
+anchors_preset = 12
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_following = true
+
+[node name="BottomBar" type="PanelContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBox" type="HBoxContainer" parent="UI/BottomBar"]
+layout_mode = 2
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="UI/BottomBar/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "🍱 메뉴"
+
+[node name="StaffButton" type="Button" parent="UI/BottomBar/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "👨‍🍳 알바"
+
+[node name="StrategyButton" type="Button" parent="UI/BottomBar/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "🎯 전략"
+
+[node name="RegionButton" type="Button" parent="UI/BottomBar/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "📍 지역 이전"
+
+[node name="SaveButton" type="Button" parent="UI/BottomBar/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "💾 저장"
+
+[node name="Panels" type="Control" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuManager" parent="UI/Panels" instance=ExtResource("3_menumg")]
+visible = false
+
+[node name="StaffManager" parent="UI/Panels" instance=ExtResource("4_staffmg")]
+visible = false
+
+[node name="StrategyPanel" parent="UI/Panels" instance=ExtResource("5_strat")]
+visible = false
+
+[node name="DayEndReport" parent="UI/Panels" instance=ExtResource("6_dayend")]
+visible = false
+
+[node name="RegionTransfer" parent="UI/Panels" instance=ExtResource("7_region")]
+visible = false

@@ -1,0 +1,28 @@
+# Godot 4+ 전용 ignore
+.godot/
+.import/
+
+# Godot-specific 임시 파일
+*.tmp
+export.cfg
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 환경 변수
+.env
+.env.local
+
+# 개발자 도구 개인 설정
+.codex/
+.claude/
+
+# 주의: build/web/ 는 Cloudflare Pages 배포용으로 커밋함
+# (Godot CLI가 만든 index.html, .wasm, .pck 파일들 포함)

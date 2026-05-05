@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8region00food"]
+
+[ext_resource type="Script" path="res://scripts/ui/RegionTransfer.gd" id="1_region"]
+
+[node name="RegionTransfer" type="Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_region")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.10, 0.95)
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "지역 이전"
+
+[node name="CloseButton" type="Button" parent="Margin/VBox/Header"]
+layout_mode = 2
+text = "닫기"
+
+[node name="HSep1" type="HSeparator" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="CurrentLabel" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+text = "현재: 노원/상계"
+
+[node name="HSep2" type="HSeparator" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="ListTitle" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+text = "=== 이전 가능 지역 ==="
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="VBoxContainer" parent="Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RegionList" type="VBoxContainer" parent="Margin/VBox/Scroll/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
